@@ -1,0 +1,30 @@
+#welcome{
+  background-color: moccasin;
+}
+
+h1.skill{
+  color: aqua;
+}
+
+.skill {
+  background-color: brown;
+}
+
+body{
+  background-image: url(https://miro.medium.com/v2/resize:fit:807/0*xQ124hsoZB92rQpP.jpg);
+  background-position: center-center;
+  background-size: cover;/*supaya full layar*/
+  background-attachment: fixed;/*supaya tidak ikut scroll*/
+}
+
+p{
+  margin-left: 20px;
+ margin-top: inherit; 
+ text-align: justify;
+}
+
+b{
+  margin-top: 50px;
+  color: white;
+  
+}
