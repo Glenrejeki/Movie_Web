@@ -1,0 +1,17 @@
+h1{
+  font-family:Arial, Helvetica, sans-serif ;
+  font-size: 50px;
+
+}
+
+p{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+}
+
+a{
+  font: Sans-serif;
+  color: black;
+  font-style: italic;
+  font-weight: bold;
+}
