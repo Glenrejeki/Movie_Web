@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dom Access</title>
+</head>
+<body>
+  <h1 id="title">Hello, World !</h1>
+  <p class="text">Ini paragraf </p>
+
+  <ul>
+    <li class="text">Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul> 
+
+  <script>
+    const title = document.getElementById(`title`)
+      console.log(title)
+    const text = document.getElementsByClassName(`text`)
+    console.log(text)
+    const el = document.getElementsByTagName(`h1`)
+    const el2 = document.getElementsByTagName(`li`) // gk bisa pakai class dan tidak statis 
+    console.log(el)
+    console.log(el2)
+    const element = document.querySelector(`li`)
+    const element2 = document.querySelectorAll(`li.text`) // ini bisa pakai class dan id, tapi statis 
+    console.log(element)
+    console.log(element2)
+  </script>
+</body>
+</html>
