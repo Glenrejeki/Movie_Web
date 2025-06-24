@@ -4,10 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOM Manipulasi element</title>
+
+
+  <style>
+    .bg-red{
+      background-color: red;
+    }
+  </style>
+
 </head>
 <body>
 
-  <div>
+  <div id="container">
     <h1>Hello, World !</h1>
     <p>Ini paragraf manipulasi element </p>
   </div>
@@ -31,6 +39,17 @@
     // 2. element.innerHTML
     paragraf.innerHTML = `ini paragraf dgn innerHTML`
 
+    const  container = document.getElementById(`container`)
+    console.log(container.innerHTML) // tag html muncul
+    console.log(container.textContent) // ini cuma isi, tapi tag tidak keluar 
+
+
+    // Manipulasi atribut 
+    paragraf.setAttribute(`class`,`bg-red`)
+
+    // Manipulasi style
+    const list = document.querySelectorAll(`li`) // jangan lupa querrySelector
+    list[2].style.fontSize = `32px`
 
   </script>
 </body>
