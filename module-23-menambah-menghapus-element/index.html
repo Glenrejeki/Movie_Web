@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menambah dan menghapus element</title>
+</head>
+<body>
+  <h1 id="title">Halo dunia !!!</h1>
+  <h1 id="title2">Ini judul Ke 2</h1>  <!-- ini menghilang karena removeChild -->
+  <h1 id="title3">Judul ke 3</h1> <!-- ini menghilang karena remove -->
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim perferendis, voluptatem sequi, qui numquam quasi in dolorem, temporibus soluta expedita at ex animi praesentium obcaecati laborum harum eveniet dolor odit.</p>
+  <ul id="list">
+    <li>Item 1</li>
+    <li id="item-2">Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <script>
+    // createElement -> Membuat element baru 
+    // appendChild -> Menambahkan elemen sebagain anak dari elemen lain, dimana posisinya dibawah 
+    const newDiv = document.createElement(`div`)
+    newDiv.textContent = `Ini div dibuat dari script `
+    document.body.appendChild(newDiv)
+
+    // insertBefore -> Menyeisipkan elemen tersebut sebelum elemen refrensi 
+    const insertBefore = document.createElement(`div`)
+    insertBefore.textContent = `Ini text Insert Before `
+    document.body.insertBefore(insertBefore, title)
+
+
+    // Ini ketika kita main di Id
+    const newLi = document.createElement(`li`)
+    newLi.textContent = `Item dari dari script `
+    const parents = document.getElementById(`list`)
+    parents.appendChild(newLi)
+    
+    const newLi2 = document.createElement(`li`)
+    newLi2.textContent = `Item dari dari script sebelum item 2 `
+    const parents2 = document.getElementById(`list`)
+    const item2= document.getElementById(`item-2`)
+    parents2.insertBefore(newLi2,item2)
+
+    // removeChild -> Menghapus elemen anak
+    document.body.removeChild(title2)
+    // remove -> Menghapus elemen, cara lain yang penting kita masukkan juga id ataupun classnya 
+    title3.remove()
+  </script>
+</body>
+</html>

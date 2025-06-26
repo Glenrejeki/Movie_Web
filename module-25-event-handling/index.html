@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Handling</title>
+</head>
+<body>
+  <h1>Ini judul 1</h1>
+  <p id="text">Lorem ipsum dolor sit amet consectetur ad ipisicing elit. Culpa perferendis i llum, deleniti odio, dignissimos quo distinctio dolorem, dolor aliquid adipisci animi nobis. Eos veniam error recusandae laudantium blanditiis quis repellat.</p>
+
+  <button onclick="alert(`button ini diclik`)">Click Me</button> 
+  <!--yang atas (inline handling) bisa dibuat satu baris atau buat script lagi tapi kita buat properti onclick juga, walaupun dibuat script fungsi itu harus kita panggil lagi si properti onclick  -->
+  <button id="submit">Submit</button>
+  <button id="submit-2">Submit 2</button>
+  <button id="ganti-warna">Ganti warna text</button>
+  
+  <!-- Ini eventListener -> kita select lagi lalu kita buat method addEventListener, lalu buat function dimana kita pilih tidandakan apa dan outputnya apa  -->
+
+  <script>
+    const button = document.getElementById("submit")
+    button.addEventListener(`click`, ()=>{
+      alert("Submitted")
+    }
+    )
+
+    const button2 = document.getElementById("submit-2")
+    button2.addEventListener ("mouseout", ()=> {
+      alert("mouse out diklick")
+    })
+
+    const gantiWarnaText = document.getElementById("text")
+    const gantiWarnaBtn = document.getElementById("ganti-warna")
+    gantiWarnaBtn.addEventListener("click", ()=>{
+      gantiWarnaText.style.backgroundColor = "red"
+    })
+    gantiWarnaBtn.addEventListener("dblclick", ()=> {
+      gantiWarnaText.style.backgroundColor =""
+    })
+  </script>
+
+</body>
+</html>

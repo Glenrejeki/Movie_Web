@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dom Traversal</title>
+</head>
+<body>
+ <h1>Halo dunia !</h1>
+ <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident distinctio qui quod recusandae ab rem modi, asperiores assumenda perferendis dolore a excepturi ut, reprehenderit saepe, repellendus porro mollitia inventore fuga!</p>
+
+ <ul id="list-item">
+  <li id="item-1">Item 1</li>
+  <li id="item-2">Item 2</li>
+  <li id="item-3">Item 3</li>
+ </ul>
+
+
+
+ <script>
+  // parentNode -> Mendapatkan elemen ortu 
+  const item1 = document.getElementById(`item-1`)
+  const item2 = document.getElementById("item-2")
+  console.log(item1.parentNode) // menampilkan tag html dan yang bukan
+  console.log(item1.parentElement) // hanya menampilkan bagian tag html, jika tidak, maka akan menampilkan null
+
+  // childNode -> Mendapaatkan NodeList dari semua anak elemen
+  const listItem = document.getElementById("list-item")
+  console.log(listItem.childNodes) // ini memperhatikan id/class jadi dihitung juga panjangnya
+  console.log(listItem.children) // ini cuma menghitung panjang tag htmlnya aja jadi id/class gk dihitung
+
+  // firstChild/lastChild -> Mendapatkan anak pertama/terakhir 
+  console.log(listItem.firstChild) // tidak mengabaikan spasi
+  console.log(listItem.firstElementChild) // mengabaikan spassi dan langsung tag htmlnya
+  console.log(listItem.lastElementChild) // mengabaikan spasi dan langsung tag htmlnya
+
+  // nextSbiling/previousSibling -> Mendapatkan elemen saudara berikutnya/sebelumnya 
+  console.log(item1.nextSibling)// tidak mengabaikan spasi
+  console.log(item1.nextElementSibling) // mengabaikan spasi dan langsung ke tag html berikutnya list item 2
+  console.log(item2.previousSibling) // tidak mengebaikan spasi
+  console.log(item2.previousElementSibling)// mengabaikan spasi dan outputnya yaitu list item 1
+ </script>  
+</body>
+</html>
