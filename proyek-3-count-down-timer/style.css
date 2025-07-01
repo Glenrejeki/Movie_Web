@@ -41,7 +41,10 @@ h1{
 /* Styling for inputs and button  */
 .input-container {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+  margin-top: 20px;
   gap: 10px;  
 }
 
@@ -72,3 +75,19 @@ button:hover {
   background-color:  #0088cc;
 }
 
+#stopPauseButton{
+  background-color: #dc3545;
+}
+
+#stopPauseButton:hover{
+  background-color: #c82333;
+}
+
+
+#resetButton{
+  background-color: #28a745;
+}
+
+#resetButton:hover{
+  background-color: #218838;
+}
