@@ -50,6 +50,14 @@
   // Add evetListener for prev
   prevBtn.addEventListener(`click`,prevSlide)
   
+  autoSlideInterval = setInterval(nextSlide, 5000)
 
 
-
+  // add event listener for Indicators 
+  indicators.forEach((indicators, index)=>{
+    indicators.addEventListener(`click`, ()=> {
+      currentIndex = index
+      updateCarousel()
+      resetAutoSlide()
+    })
+  })
