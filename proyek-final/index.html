@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Civil KPI Calculator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 30px;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    h2, h3 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 30px;
+      table-layout: fixed;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+      vertical-align: middle;
+      word-wrap: break-word;
+    }
+
+    th {
+      background-color: #007BFF;
+      color: white;
+      font-weight: 600;
+    }
+
+    td {
+      background-color: #fafafa;
+    }
+
+    th:nth-child(2), td:nth-child(2) {
+      width: 30%;
+    }
+
+    th:nth-child(4), td:nth-child(4) {
+      width: 18%;
+    }
+
+    input[type="text"] {
+      width: 90%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    input[type="text"]:focus, select:focus {
+      outline: none;
+      border-color: #007BFF;
+      box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+
+    .btn {
+      padding: 12px 24px;
+      background-color: #007BFF;
+      color: white;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      display: block;
+      margin: 20px auto;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+    }
+
+    select {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .fee-select-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      th, td {
+        padding: 8px;
+        font-size: 12px;
+      }
+
+      input[type="text"], select {
+        font-size: 12px;
+      }
+
+      .btn {
+        padding: 10px 18px;
+        font-size: 14px;
+      }
+
+      .fee-select-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Civil KPI Allocation Guide (Non-Intrax)</h2>
+
+  <!-- Fee Type Selector: Posisi di kanan atas sebelum tabel -->
+  <div class="fee-select-container">
+    <label for="fee-type">Fee Type (NI / INTRAX):</label>
+    <select id="fee-type" onchange="updateResults()">
+      <option value="">Pilih Tipe</option>
+      <option value="NI">NI</option>
+      <option value="INTRAX">INTRAX</option>
+    </select>
+  </div>
+
+  <div id="kpi-form">
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Components</th>
+          <th>KPI</th>
+          <th>Condition</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody id="kpi-table-body"></tbody>
+      <tfoot>
+        <tr><th colspan="4">SUM</th><td id="sum-cell">0 KPI</td></tr>
+        <tr><th colspan="4">Final Result (Sum × 1.5)</th><td id="final-cell">0 Jam</td></tr>
+        <tr><th colspan="4">Fee</th><td id="fee-cell">$0 AUD</td></tr>
+      </tfoot>
+    </table>
+
+    <button class="btn" onclick="downloadPDF()">Simpan Jadi PDF</button>
+  </div>
+
+  <h3>Fee Rate Table</h3>
+  <table>
+    <tr><th>Type</th><th>Rate/KPI</th></tr>
+    <tr><td>NI</td><td id="ni-rate">$25.00</td></tr>
+    <tr><td>INTRAX</td><td id="intrax-rate">$37.80</td></tr>
+  </table>
+
+  <script>
+    const components = [
+      ["Drainage Design (single unit)", 0.8],
+      ["Additional per dwellings/each 200sqm roof", 0.2],
+      ["OSD", 3.5],
+      ["Basement", 5],
+      ["Pump (non OSD)", 3],
+      ["Pump (with OSD)", 2],
+      ["Soakage Pit", 2],
+      ["Outfall Drain (10m–30m)", 5],
+      ["Outfall Drain (30m–60m)", 7],
+      ["STORM Report", 0.5],
+      ["Council Submission", 0.7],
+      ["Administrative", 0.5],
+      ["DBYD", 0.4],
+      ["Pavement Design (each 50 sqm)", 0.2],
+      ["Endorsed TP/NOD is not available", 0.3]
+    ];
+
+    const tbody = document.getElementById("kpi-table-body");
+
+    components.forEach((comp, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${comp[0]}</td>
+        <td class="kpi">${comp[1]}</td>
+        <td><input type="text" class="condition" oninput="updateResults()"/></td>
+        <td class="result">FALSE</td>
+      `;
+      tbody.appendChild(row);
+    });
+
+    function updateResults() {
+      let sum = 0;
+      const rows = document.querySelectorAll("#kpi-table-body tr");
+
+      rows.forEach((row, i) => {
+        const kpi = parseFloat(row.querySelector(".kpi").textContent);
+        const condInput = row.querySelector(".condition").value.trim().toUpperCase();
+        let resultCell = row.querySelector(".result");
+        let result = 0;
+
+        if (i === 1) {
+          const base = parseFloat(rows[0].querySelector(".condition").value);
+          const add = parseFloat(row.querySelector(".condition").value);
+          if (!isNaN(base) && !isNaN(add)) {
+            result = (add - base) * kpi;
+            resultCell.textContent = result.toFixed(2);
+            sum += result;
+          } else {
+            resultCell.textContent = "FALSE";
+          }
+        } else if (i === 13) {
+          const val = parseFloat(row.querySelector(".condition").value);
+          if (!isNaN(val)) {
+            result = val < 200 ? kpi : (0.2 + ((val - 200) / 50) * 0.2);
+            resultCell.textContent = result.toFixed(2);
+            sum += result;
+          } else {
+            resultCell.textContent = "FALSE";
+          }
+        } else if (!isNaN(condInput) && condInput !== "") {
+          result = parseFloat(condInput) * kpi;
+          resultCell.textContent = result.toFixed(2);
+          sum += result;
+        } else if (condInput === "YES" || condInput === "YES/NO") {
+          resultCell.textContent = kpi.toFixed(2);
+          sum += kpi;
+        } else {
+          resultCell.textContent = "FALSE";
+        }
+      });
+
+      const final = sum * 1.5;
+      document.getElementById("sum-cell").textContent = sum.toFixed(2) + " KPI";
+      document.getElementById("final-cell").textContent = final.toFixed(3) + " Jam";
+
+      const type = document.getElementById("fee-type").value.trim().toUpperCase();
+      let rate = 0;
+      if (type === "NI") {
+        rate = 25;
+      } else if (type === "INTRAX") {
+        rate = 37.8;
+      }
+      const fee = rate * final;
+      document.getElementById("fee-cell").textContent = "$" + fee.toFixed(3) + " AUD";
+    }
+
+    function downloadPDF() {
+      const element = document.getElementById("kpi-form");
+      const opt = {
+        margin: 0.5,
+        filename: 'Civil_KPI_Report.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(element).save();
+    }
+  </script>
+</body>
+</html>
