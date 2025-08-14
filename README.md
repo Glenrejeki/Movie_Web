@@ -22,3 +22,16 @@
 
 ![alt text](image.png)
 ![alt text](image-1.png)
+
+
+# Target Proyek
+- [ ] **Civil Web**
+- [x] **Paint App**
+- [ ] **Quiz App**
+- [ ] **Audio App**
+- [ ] **Typing Speed App**
+- [ ] **Todo List App**
+- [ ] **Shooping App**
+- [ ] **Weather App**
+
+
