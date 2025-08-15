@@ -27,7 +27,7 @@
 # Target Proyek
 - [ ] **Civil Web**
 - [x] **Paint App**
-- [ ] **Quiz App**
+- [x] **Quiz App**
 - [ ] **Audio App**
 - [ ] **Typing Speed App**
 - [ ] **Todo List App**

@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quizz App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
+
+    <div class="quizz-container">
+        <h1>Quizz App</h1>
+
+        <!-- Area to show the question -->
+        <div class="question-container" id="question-container">
+            <p id="question">Question text goes here</p>
+        </div>
+        <div id="answer-button" class="answer-button">
+            <!-- The answer is dynamic from javascript -->
+        </div>
+        <button class="next-btn" id="next-btn">Next Question</button>
+
+        <!-- Show the score -->
+        <div id="result-container" class="result-container">
+            <p id="score">Your score : 0 / 0 </p>
+            <button id="restart-btn" class="restart-btn" style="display: none;">Restart Quizz</button>
+        </div>
+    </div>
+
+
+
+
+    <script src="script.js"></script>
 </body>
 </html>
