@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Custom Audio App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- container -->
+    <div class="container">
+        <!-- audio player -->
+        <div class="audio-player">
+            <div class="audio-controls">
+            <button id="play-pause" class="play-btn">
+                <img id="play-icon" class="play-btn" src="https://cdn-icons-png.flaticon.com/128/5577/5577228.png" alt="Play" width="24" height="24">
+                <img id="pause-icon" class="pause-btn" src="https://cdn-icons-png.flaticon.com/128/3669/3669483.png" alt="pause" width="24" height="24" style="display: none;">
+            </button>
+                <!-- progress container -->
+            <div class="progres-container">
+                <!-- Progres bar  -->
+                <div id="progress-bar" class="progress-bar">
+                </div>
+            </div>
+            </div>
+            <!-- curent track -->
+            <p id="current-track">No Track Selected</p>
+            <audio src="" id="audio"></audio>
+        </div>
+        <!-- audio controls -->
+
+
+        <div class="audio-list">
+            <label for="audio-upload" class="updload-label">Import Audio</label>
+            <input type="file" accept="audio/*" multiple id="audio-upload">
+            <ul id="playlist">
+                <!-- List audio is going to input from javascript -->
+
+            </ul>
+        </div>
+    </div>
+
+
     
+    
+    
+    <script src="script.js"></script>
 </body>
 </html>

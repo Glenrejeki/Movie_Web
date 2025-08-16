@@ -28,7 +28,7 @@
 - [ ] **Civil Web**
 - [x] **Paint App**
 - [x] **Quiz App**
-- [ ] **Audio App**
+- [x] **Audio App**
 - [ ] **Typing Speed App**
 - [ ] **Todo List App**
 - [ ] **Shooping App**
