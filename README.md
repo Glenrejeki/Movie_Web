@@ -1,7 +1,7 @@
 # Movie_Web
-# 🏗️ Proyek Civil Calculator
+## 🏗️ Proyek Civil Calculator
 
-## ✅ Checklist Pengembangan
+### ✅ Checklist Pengembangan
 
 - [ ] **Halaman untuk memuat data KPI project lama**  
   → Tambahkan halaman atau fitur untuk menampilkan data historis KPI dari proyek sebelumnya.
@@ -29,9 +29,14 @@
 - [x] **Paint App**
 - [x] **Quiz App**
 - [x] **Audio App**
-- [ ] **Typing Speed App**
+- [x] **Typing Speed App**
 - [ ] **Todo List App**
 - [ ] **Shooping App**
 - [ ] **Weather App**
 
 
+## Note Javascript : 
+![alt text](image-2.png)
+
+
+![alt text](image-3.png)

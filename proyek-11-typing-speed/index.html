@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Typing Speed Test App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
+    <div class="container">
+        <h1>Typing Speed Test</h1>
+        <p id="text-to-type">The Quick brown fox jump over the lazy dog </p>
+        <textarea placeholder="Start typing here ..." id="user-input"></textarea>
+        <button id="start-btn">Start Test</button>
+        <div id="results">
+            <p id="timer">Time : <span id="time">0</span> seconds</p>
+            <p id="wpm">Words per minute : <span id="words-per-minute">0</span> WPM</p>
+        </div>
+    </div>
+    
+
+
+
+    <script src="script.js"></script>
 </body>
 </html>
