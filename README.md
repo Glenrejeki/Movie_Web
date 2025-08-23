@@ -30,7 +30,7 @@
 - [x] **Quiz App**
 - [x] **Audio App**
 - [x] **Typing Speed App**
-- [ ] **Todo List App**
+- [x] **Todo List App**
 - [ ] **Shooping App**
 - [ ] **Weather App**
 
