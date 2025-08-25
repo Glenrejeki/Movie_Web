@@ -3,9 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shooping App </title>
+    <title>Shopping App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
+    <!-- Header -->
+    <header>
+        <h1>TokoKu</h1>
+        <div onclick="shoppingCart.toggleCart()" class="cart-icon">
+            🛒 <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <!-- Product List / main section -->
+    <main>
+        <section id="product-list">
+            <!-- List produk akan dimasukkan via JS -->
+        </section>
+    </main>
+
+    <!-- Modal Cart -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <span onclick="shoppingCart.toggleCart()" class="close">&times;</span>
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items">
+                <!-- List product dari keranjang -->
+            </ul>
+            <div class="total-price">
+                Total: $<span id="total-price">0.00</span>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal Detail Produk -->
+<div id="product-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="shoppingCart.toggleProductDetail()">&times;</span>
+        
+        <img src="" alt="Product Image" id="detail-image">
+        
+        <h2 id="detail-title"></h2>
+        <p id="detail-description"></p>
+        
+        <!-- Informasi tambahan -->
+        <p><strong>Price:</strong> $<span id="detail-price"></span></p>
+        <p><strong>Category:</strong> <span id="detail-category"></span></p>
+        <p><strong>Stock:</strong> <span id="detail-stock"></span></p>
+        
+        <button id="add-to-cart-btn" onclick="shoppingCart.addToCartFromDetail()">Add To Cart</button>
+    </div>
+</div>
+
+
+    <script src="script.js"></script>
 </body>
 </html>
