@@ -31,7 +31,7 @@
 - [x] **Audio App**
 - [x] **Typing Speed App**
 - [x] **Todo List App**
-- [ ] **Shooping App**
+- [x] **Shooping App**
 - [ ] **Weather App**
 
 
