@@ -32,7 +32,7 @@
 - [x] **Typing Speed App**
 - [x] **Todo List App**
 - [x] **Shooping App**
-- [ ] **Weather App**
+- [x] **Weather App**
 
 
 ## Note Javascript : ****
