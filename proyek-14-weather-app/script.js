@@ -9,7 +9,7 @@ const weatherIconElement = document.getElementById('weather-icon')
 
 
 async function getWeather(latitude, longitude) {
-    const apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
+    const apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric&lang=id`
 
 
     try {
@@ -19,8 +19,10 @@ async function getWeather(latitude, longitude) {
         locationElement.textContent = `${data.name},${data.sys.country}`
         tempartureElement.textContent = `Temperature :${data.main.temp} °C`
         descriptionElement.textContent =`Description ${data.weather[0].description}`
-        const iconCode  = data.weather[0].icon
-        weatherIconElement.innerHTML = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="Weather Icon">`
+     const iconCode  = data.weather[0].icon
+weatherIconElement.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`
+weatherIconElement.alt = "Weather Icon"
+
 
     } catch (error) {
         console.error('Error Fetching weather data')

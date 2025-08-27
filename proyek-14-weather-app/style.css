@@ -46,5 +46,8 @@ h1{
 
 .weather-icon img{
     width: 100px;
+    margin-top: 20px;
+    display: block;
     height: 100px;
+    margin: 0 auto;
 }
